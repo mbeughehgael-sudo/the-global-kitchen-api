@@ -9,6 +9,10 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
+app.get('/', (req, res) => {
+  res.json({ message: 'Welcome to the Global Kitchen API', endpoints: { recipes: '/recipes' } });
+});
+
 app.use('/recipes', recipeRoutes);
 
 app.use((req, res) => {
