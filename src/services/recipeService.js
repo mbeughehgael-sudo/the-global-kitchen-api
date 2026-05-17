@@ -5,10 +5,6 @@ const getAllRecipes = async (category) => {
   return Recipe.find(filter).sort({ createdAt: -1 });
 };
 
-const getRecipeById = async (id) => {
-  return Recipe.findById(id);
-};
-
 const createRecipe = async (recipeData) => {
   if (recipeData.cookingTime !== undefined && recipeData.cookingTime <= 0) {
     throw new Error('Cooking time must be a positive number');
@@ -32,7 +28,6 @@ const deleteRecipe = async (id) => {
 
 module.exports = {
   getAllRecipes,
-  getRecipeById,
   createRecipe,
   updateRecipe,
   deleteRecipe,

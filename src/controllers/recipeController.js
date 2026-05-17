@@ -10,18 +10,6 @@ const getAllRecipes = async (req, res, next) => {
   }
 };
 
-const getRecipeById = async (req, res, next) => {
-  try {
-    const recipe = await recipeService.getRecipeById(req.params.id);
-    if (!recipe) {
-      return res.status(404).json({ success: false, message: 'Recipe not found' });
-    }
-    res.status(200).json({ success: true, data: recipe });
-  } catch (error) {
-    next(error);
-  }
-};
-
 const createRecipe = async (req, res, next) => {
   try {
     const recipe = await recipeService.createRecipe(req.body);
@@ -57,7 +45,6 @@ const deleteRecipe = async (req, res, next) => {
 
 module.exports = {
   getAllRecipes,
-  getRecipeById,
   createRecipe,
   updateRecipe,
   deleteRecipe,
